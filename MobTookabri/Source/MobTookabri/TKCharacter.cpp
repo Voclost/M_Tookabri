@@ -21,11 +21,9 @@ ATKCharacter::ATKCharacter()
 	// Set size for collision capsule
 	GetCapsuleComponent()->SetCapsuleSize(42.f, 96.0f);
 
-	if (myMesh.Succeeded() /*&& myAnimBP.Succeeded()*/)
+	if (myMesh.Succeeded())
 	{
 		GetMesh()->SetSkeletalMesh(myMesh.Object);
-		//GetMesh()->Set
-		//GetMesh()->SetAnimInstanceClass(myAnimBP.Object->GeneratedClass);
 	}
 
 	// Rotate and position the mesh so it sits in the capsule component properly
@@ -45,7 +43,7 @@ ATKCharacter::ATKCharacter()
 	CameraBoom->SetupAttachment(RootComponent);
 
 	// The camera follows at this distance behind the character
-	CameraBoom->TargetArmLength = 200.0f;
+	CameraBoom->TargetArmLength = 280.0f;
 
 	// Offset to player
 	CameraBoom->AddRelativeLocation(FVector(0.0f, 0.0f, 160.0f));
@@ -77,6 +75,7 @@ void ATKCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
+	
 	for (TActorIterator<ATargetPoint>TargetIter(GetWorld());
 		TargetIter;
 		++TargetIter)
@@ -92,7 +91,7 @@ void ATKCharacter::BeginPlay()
 
 	CurrentLocation = ((TargetArray.Num() / 2) + (TargetArray.Num() % 2) - 1);
 
-	
+	this->SetActorScale3D(FVector(0.7f,0.7f,0.7f));
 }
 
 void ATKCharacter::ScoreUp()
