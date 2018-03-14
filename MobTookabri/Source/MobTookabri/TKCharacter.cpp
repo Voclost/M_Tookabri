@@ -43,7 +43,7 @@ ATKCharacter::ATKCharacter()
 	CameraBoom->SetupAttachment(RootComponent);
 
 	// The camera follows at this distance behind the character
-	CameraBoom->TargetArmLength = 280.0f;
+	CameraBoom->TargetArmLength = 250.0f;
 
 	// Offset to player
 	CameraBoom->AddRelativeLocation(FVector(0.0f, 0.0f, 160.0f));
@@ -131,11 +131,11 @@ void ATKCharacter::MoveLeft()
 }
 
 
-void ATKCharacter::myOnComponentOverlap(UPrimitiveComponent * ThisActor, AActor * otherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SwwepResult)
+void ATKCharacter::myOnComponentOverlap(UPrimitiveComponent* ThisActor, AActor* otherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SwwepResult)
 {
 }
 
-void ATKCharacter::myOnComponentEndOverlap(UPrimitiveComponent * ThisActor, AActor * otherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
+void ATKCharacter::myOnComponentEndOverlap(UPrimitiveComponent* ThisActor, AActor* otherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 }
 
