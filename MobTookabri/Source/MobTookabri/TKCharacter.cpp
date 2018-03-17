@@ -43,7 +43,7 @@ ATKCharacter::ATKCharacter()
 	CameraBoom->SetupAttachment(RootComponent);
 
 	// The camera follows at this distance behind the character
-	CameraBoom->TargetArmLength = 250.0f;
+	CameraBoom->TargetArmLength = 220.0f;
 
 	// Offset to player
 	CameraBoom->AddRelativeLocation(FVector(0.0f, 0.0f, 160.0f));
@@ -53,7 +53,6 @@ ATKCharacter::ATKCharacter()
 	check(FollowCamera);
 
 	// Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
-	//FollowCamera->AttachToComponent(CameraBoom, FAttachmentTransformRules::KeepWorldTransform, USpringArmComponent::SocketName);
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 
 	// Rotational change to make the camera look down slightly
@@ -91,6 +90,7 @@ void ATKCharacter::BeginPlay()
 
 	CurrentLocation = ((TargetArray.Num() / 2) + (TargetArray.Num() % 2) - 1);
 
+	// Character initial scale
 	this->SetActorScale3D(FVector(0.7f,0.7f,0.7f));
 }
 
@@ -155,7 +155,27 @@ void ATKCharacter::Tick(float DeltaTime)
 		}
 	}
 
+	// call MoveCamera every tick when swiping down
+	this->MoveCamera(DeltaTime);
 }
+
+
+void ATKCharacter::MoveCamera(float DeltaTime)
+{
+	//float deltaTime = this->GetWorld()->GetDeltaSeconds();
+
+	if ((Controller != nullptr))
+	{
+		if (!FMath::IsNearlyEqual(CameraBoom->TargetArmLength, 220.0f))
+		{
+			this->CameraBoom->TargetArmLength = FMath::FInterpTo(CameraBoom->TargetArmLength, 50.0f, DeltaTime, 0.1f);	
+		}
+
+	}
+}
+
+//FollowCamera->RelativeRotation = FRotator(-10.0f, 0.0f, 0.0f);
+
 
 // Called to bind functionality to input
 void ATKCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

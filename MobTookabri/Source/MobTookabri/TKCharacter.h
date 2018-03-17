@@ -45,6 +45,9 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = "Move")
 	void MoveLeft();
 
+	UFUNCTION(BlueprintCallable, Category = "Move")
+	void MoveCamera(float DeltaTime);
+
 	// Overlap functions to be used upon capsule component collision
 	UFUNCTION()
 	void myOnComponentOverlap(UPrimitiveComponent* ThisActor, AActor* otherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SwwepResult);
