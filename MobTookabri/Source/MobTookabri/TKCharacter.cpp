@@ -47,7 +47,7 @@ ATKCharacter::ATKCharacter()
 
 	// Offset to player
 	CameraBoom->AddRelativeLocation(FVector(0.0f, 0.0f, 160.0f));
-
+	
 	// Create a follow camera
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	check(FollowCamera);
@@ -155,26 +155,9 @@ void ATKCharacter::Tick(float DeltaTime)
 		}
 	}
 
-	// call MoveCamera every tick when swiping down
-	this->MoveCamera(DeltaTime);
 }
 
 
-void ATKCharacter::MoveCamera(float DeltaTime)
-{
-	//float deltaTime = this->GetWorld()->GetDeltaSeconds();
-
-	if ((Controller != nullptr))
-	{
-		if (!FMath::IsNearlyEqual(CameraBoom->TargetArmLength, 220.0f))
-		{
-			this->CameraBoom->TargetArmLength = FMath::FInterpTo(CameraBoom->TargetArmLength, 50.0f, DeltaTime, 0.1f);	
-		}
-
-	}
-}
-
-//FollowCamera->RelativeRotation = FRotator(-10.0f, 0.0f, 0.0f);
 
 
 // Called to bind functionality to input

@@ -12,17 +12,17 @@ ATKRoad::ATKRoad()
 	
 	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 
-	ConstructorHelpers::FObjectFinder<UStaticMesh>myMesh(TEXT("StaticMesh'/Game/Geometry/Meshes/Street_Mesh_Tookabri.Street_Mesh_Tookabri'"));
+	ConstructorHelpers::FObjectFinder<UStaticMesh>myMesh(TEXT("StaticMesh'/Game/Geometry/Road/way4/way42.way42'"));
 
-	ConstructorHelpers::FObjectFinder<UMaterial>myMaterial(TEXT("Material'/Game/MobileStarterContent/Materials/M_Concrete_Tiles.M_Concrete_Tiles'"));
+	ConstructorHelpers::FObjectFinder<UMaterial>myMaterial(TEXT("Material'/Game/Geometry/Road/way4/Material__32.Material__32'"));
 
 	if (myMesh.Succeeded())
 	{
-		NumRepeatingMesh = 3;
+		NumRepeatingMesh = 30;
 
 		FBoxSphereBounds myBounds = myMesh.Object->GetBounds();
 		float XBounds = myBounds.BoxExtent.X * 2;
-		float ScenePos = ((XBounds * (NumRepeatingMesh - 1)) / 2.0f) * -1;
+		float ScenePos = ((XBounds * (NumRepeatingMesh - 15.0f)) / 2.0f) * -1;
 
 		KillPoint = ScenePos - (XBounds * 0.5f);
 		SpawnPoint = (ScenePos * -1) + (XBounds * 0.5f);
@@ -46,10 +46,10 @@ ATKRoad::ATKRoad()
 			UStaticMeshComponent* thisMesh = CreateDefaultSubobject<UStaticMeshComponent>(FName(*MeshName));
 			check(thisMesh);
 
-			//thisMesh->AttachToComponent(FloorMeshScenes[i], FAttachmentTransformRules::KeepWorldTransform);
 			thisMesh->SetupAttachment(FloorMeshScenes[i]);
 			thisMesh->SetRelativeLocation(FVector(0.0f, 0.0f, 0.0f));
 			thisMesh->SetCollisionProfileName(TEXT("OverlapAllDynamic"));
+			
 
 			if (myMaterial.Succeeded())
 			{
