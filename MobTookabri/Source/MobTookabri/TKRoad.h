@@ -28,13 +28,13 @@ public:
 	float GetKillPoint();
 	float GetSpawnPoint();
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, Instanced, Category = "Road")
 	TArray<USceneComponent*> FloorMeshScenes;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, Instanced, Category = "Road")
 	TArray<UStaticMeshComponent*> FloorMeshes;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, Instanced, Category = "Road")
 	UBoxComponent* CollisionBox;
 
 	int32 NumRepeatingMesh;

@@ -15,6 +15,7 @@ ATKRoad::ATKRoad()
 	ConstructorHelpers::FObjectFinder<UStaticMesh>myMesh(TEXT("StaticMesh'/Game/Geometry/Road/way4/way42.way42'"));
 
 	ConstructorHelpers::FObjectFinder<UMaterial>myMaterial(TEXT("Material'/Game/Geometry/Road/way4/Material__32.Material__32'"));
+	ConstructorHelpers::FObjectFinder<UMaterial>myMaterialEdge(TEXT("Material'/Game/Geometry/Road/way4/Material__28.Material__28'"));
 
 	if (myMesh.Succeeded())
 	{
@@ -51,16 +52,23 @@ ATKRoad::ATKRoad()
 			thisMesh->SetCollisionProfileName(TEXT("OverlapAllDynamic"));
 			
 
+			if (myMaterialEdge.Succeeded())
+			{
+				thisMesh->SetStaticMesh(myMesh.Object);
+				thisMesh->SetMaterial(0, myMaterialEdge.Object);
+			}
+
 			if (myMaterial.Succeeded())
 			{
 				thisMesh->SetStaticMesh(myMesh.Object);
-				thisMesh->SetMaterial(0, myMaterial.Object);
+				thisMesh->SetMaterial(1, myMaterial.Object);
 			}
+
 
 			FloorMeshes.Add(thisMesh);
 		}
 
-		CollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("CollsionBox"));
+		CollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionBox"));
 		check(CollisionBox);
 
 		CollisionBox->SetupAttachment(RootComponent);
