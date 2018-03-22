@@ -75,11 +75,13 @@ void ATKCharacter::BeginPlay()
 	Super::BeginPlay();
 
 	
-	for (TActorIterator<ATargetPoint>TargetIter(GetWorld());
-		TargetIter;
-		++TargetIter)
+	for (TActorIterator<ATargetPoint>TargetIter(GetWorld()); TargetIter; ++TargetIter)
 	{
-		TargetArray.Add(*TargetIter);
+		if (TargetIter->ActorHasTag(TEXT("TargetPlayer")))
+		{
+			TargetArray.Add(*TargetIter);
+		}
+		
 	}
 
 	auto SortPred = [](const AActor& A, const AActor& B)->bool
@@ -91,7 +93,7 @@ void ATKCharacter::BeginPlay()
 	CurrentLocation = ((TargetArray.Num() / 2) + (TargetArray.Num() % 2) - 1);
 
 	// Character initial scale
-	this->SetActorScale3D(FVector(0.7f,0.7f,0.7f));
+	this->SetActorScale3D(FVector(0.6f,0.6f,0.6f));
 }
 
 void ATKCharacter::ScoreUp()
@@ -150,8 +152,7 @@ void ATKCharacter::Tick(float DeltaTime)
 		targetLoc.X = GetActorLocation().X;
 		if (targetLoc != GetActorLocation())
 		{
-			SetActorLocation(FMath::Lerp(GetActorLocation(), targetLoc, CharSpeed
-				* DeltaTime));
+			SetActorLocation(FMath::Lerp(GetActorLocation(), targetLoc, CharSpeed* DeltaTime));
 		}
 	}
 
