@@ -14,6 +14,7 @@
 #include "Materials/Material.h"
 #include "TKGameMode.h"
 #include "InputCore.h"
+#include "Runtime/Engine/Classes/Components/BoxComponent.h"
 #include "Runtime/InputCore/Classes/InputCoreTypes.h"
 #include "Runtime/Engine/Classes/Components/InputComponent.h"
 #include "CoreMinimal.h"
