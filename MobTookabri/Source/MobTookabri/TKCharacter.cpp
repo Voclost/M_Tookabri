@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "TKCharacter.h"
+#include "Obstacle.h"
 #include "MobTookabri.h"
 #include "Animation/AnimInstance.h"
 #include "Animation/AnimBlueprint.h"
@@ -19,7 +20,7 @@ ATKCharacter::ATKCharacter()
 	ConstructorHelpers::FObjectFinder<USkeletalMesh>myMesh(TEXT("SkeletalMesh'/Game/Character/Mesh/SK_Mannequin.SK_Mannequin'"));
 
 	// Set size for collision capsule
-	GetCapsuleComponent()->SetCapsuleSize(42.f, 96.0f);
+	GetCapsuleComponent()->SetCapsuleSize(102.f, 96.0f);
 
 	if (myMesh.Succeeded())
 	{
@@ -135,10 +136,29 @@ void ATKCharacter::MoveLeft()
 
 void ATKCharacter::myOnComponentOverlap(UPrimitiveComponent* ThisActor, AActor* otherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SwwepResult)
 {
+	if (otherActor->GetClass()->IsChildOf(AObstacle::StaticClass()))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("DA5LOU"));
+		FVector vecBetween = otherActor->GetActorLocation() - GetActorLocation();
+		float AngleBetween = FMath::Acos(FVector::DotProduct(vecBetween.GetSafeNormal(), GetActorForwardVector().GetSafeNormal()));
+		
+		AngleBetween *= (180 / PI);
+		
+		if (AngleBetween < 60.0f)
+		{
+			bBeingPushed = true;
+		}
+	}
+
+	
 }
 
 void ATKCharacter::myOnComponentEndOverlap(UPrimitiveComponent* ThisActor, AActor* otherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
+	if (otherActor->GetClass()->IsChildOf(AObstacle::StaticClass()))
+	{
+		bBeingPushed = false;
+	}
 }
 
 // Called every frame
@@ -154,6 +174,12 @@ void ATKCharacter::Tick(float DeltaTime)
 		{
 			SetActorLocation(FMath::Lerp(GetActorLocation(), targetLoc, CharSpeed* DeltaTime));
 		}
+	}
+
+	if (bBeingPushed)
+	{
+		float moveSpeed = GetCustomGameMode<ATKGameMode>(GetWorld())->GetInvGameSpeed();
+		AddActorLocalOffset(FVector(moveSpeed, 0.0f, 0.0f));
 	}
 
 }
