@@ -13,6 +13,7 @@
 #include "Engine/StaticMesh.h"
 #include "Materials/Material.h"
 #include "TKGameMode.h"
+#include "Runtime/Engine/Public/EngineUtils.h"
 #include "Runtime/CoreUObject/Public/Templates/Casts.h"
 #include "InputCore.h"
 #include "Runtime/Engine/Classes/Components/BoxComponent.h"
