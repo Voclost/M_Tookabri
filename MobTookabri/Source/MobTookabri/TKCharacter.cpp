@@ -62,9 +62,6 @@ ATKCharacter::ATKCharacter()
 	// Game Properties
 	CharSpeed = 10.0f;
 
-	GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &ATKCharacter::myOnComponentOverlap);
-	GetCapsuleComponent()->OnComponentEndOverlap.AddDynamic(this, &ATKCharacter::myOnComponentEndOverlap);
-
 	// Poses the input at ID 0 (the default controller)
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 
@@ -75,7 +72,9 @@ void ATKCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	
+	GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &ATKCharacter::myOnComponentOverlap);
+	GetCapsuleComponent()->OnComponentEndOverlap.AddDynamic(this, &ATKCharacter::myOnComponentEndOverlap);
+
 	for (TActorIterator<ATargetPoint>TargetIter(GetWorld()); TargetIter; ++TargetIter)
 	{
 		if (TargetIter->ActorHasTag(TEXT("TargetPlayer")))
@@ -136,9 +135,9 @@ void ATKCharacter::MoveLeft()
 
 void ATKCharacter::myOnComponentOverlap(UPrimitiveComponent* ThisActor, AActor* otherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SwwepResult)
 {
-	if (otherActor->GetClass()->IsChildOf(AObstacle::StaticClass()))
+	UE_LOG(LogTemp, Warning, TEXT("OUFFEOUW MEN DA5LOU DANS LE IF"));
+	/*if (otherActor->GetClass()->IsChildOf(AObstacle::StaticClass()))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("DA5LOU"));
 		FVector vecBetween = otherActor->GetActorLocation() - GetActorLocation();
 		float AngleBetween = FMath::Acos(FVector::DotProduct(vecBetween.GetSafeNormal(), GetActorForwardVector().GetSafeNormal()));
 		
@@ -148,17 +147,18 @@ void ATKCharacter::myOnComponentOverlap(UPrimitiveComponent* ThisActor, AActor* 
 		{
 			bBeingPushed = true;
 		}
-	}
+	}*/
 
 	
 }
 
 void ATKCharacter::myOnComponentEndOverlap(UPrimitiveComponent* ThisActor, AActor* otherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	if (otherActor->GetClass()->IsChildOf(AObstacle::StaticClass()))
+
+	/*if (otherActor->GetClass()->IsChildOf(AObstacle::StaticClass()))
 	{
 		bBeingPushed = false;
-	}
+	}*/
 }
 
 // Called every frame
