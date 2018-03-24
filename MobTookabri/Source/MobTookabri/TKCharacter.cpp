@@ -64,7 +64,7 @@ ATKCharacter::ATKCharacter()
 
 	// Poses the input at ID 0 (the default controller)
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
-
+	
 }
 
 // Called when the game starts or when spawned
@@ -149,7 +149,6 @@ void ATKCharacter::myOnComponentOverlap(UPrimitiveComponent* ThisActor, AActor* 
 		}
 	}*/
 
-	
 }
 
 void ATKCharacter::myOnComponentEndOverlap(UPrimitiveComponent* ThisActor, AActor* otherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)

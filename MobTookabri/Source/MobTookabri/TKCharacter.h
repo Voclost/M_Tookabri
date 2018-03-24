@@ -64,6 +64,7 @@ protected:
 	UPROPERTY(BlueprintReadOnly)
 	int32 Score;
 
+
 private:
 	// Data for character lane positioning 
 	short CurrentLocation;
