@@ -61,7 +61,9 @@ ATKCharacter::ATKCharacter()
 
 	// Poses the input at ID 0 (the default controller)
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
-		
+	
+	moveSpeed = 8.0f;
+
 }
 
 // Called when the game starts or when spawned
@@ -157,6 +159,7 @@ void ATKCharacter::myOnComponentEndOverlap(UPrimitiveComponent* ThisActor, AActo
 	}*/
 }
 
+
 // Called every frame
 void ATKCharacter::Tick(float DeltaTime)
 {
@@ -172,6 +175,15 @@ void ATKCharacter::Tick(float DeltaTime)
 		}
 	}
 
+	//ATKGameMode* SetGameSpeed(float moveSpeed);
+	//GetCustomGameMode<ATKGameMode>(GetWorld()->SetGameSpeed(float moveSpeed));
+	// UE_LOG(YourLog,Warning,TEXT("MyCharacter's Health is %f"), MyCharacter->Health );
+	//UE_LOG(LogClass, Log, TEXT("MoveSpeed Value: %f"), this->moveSpeed);
+	if (moveSpeed == 0.0f)
+	{
+		float gameSpeed = GetCustomGameMode<ATKGameMode>(GetWorld())->SetGameSpeed(moveSpeed);
+	}
+	
 }
 
 

@@ -31,6 +31,7 @@ public:
 	UPROPERTY()
 	float gameSpeed;
 
+	float SetGameSpeed(float NewGameSpeed);
 
 protected:
 

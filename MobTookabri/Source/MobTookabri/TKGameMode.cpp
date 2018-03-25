@@ -36,3 +36,9 @@ int32 ATKGameMode::GetGameLevel()
 {
 	return gameLevel;
 }
+
+float ATKGameMode::SetGameSpeed(float NewGameSpeed)
+{
+	gameSpeed = NewGameSpeed;
+	return gameSpeed;
+}

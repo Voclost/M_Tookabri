@@ -69,6 +69,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float moveSpeed;
 
+
 private:
 	// Data for character lane positioning 
 	short CurrentLocation;
