@@ -13,10 +13,6 @@ UCLASS()
 class MOBTOOKABRI_API ATKGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
-	
-	UPROPERTY()
-	float gameSpeed;
-
 
 public:
 	ATKGameMode();
@@ -31,6 +27,9 @@ public:
 
 	UFUNCTION()
 	int32 GetGameLevel();
+
+	UPROPERTY()
+	float gameSpeed;
 
 
 protected:

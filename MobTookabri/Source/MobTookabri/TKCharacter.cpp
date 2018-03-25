@@ -14,13 +14,10 @@ ATKCharacter::ATKCharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
 	ConstructorHelpers::FObjectFinder<USkeletalMesh>myMesh(TEXT("SkeletalMesh'/Game/Character/Mesh/SK_Mannequin.SK_Mannequin'"));
 
 	// Set size for collision capsule
-	GetCapsuleComponent()->SetCapsuleSize(102.f, 96.0f);
+	GetCapsuleComponent()->SetCapsuleSize(80.0f, 40.0f);
 
 	if (myMesh.Succeeded())
 	{
@@ -64,7 +61,7 @@ ATKCharacter::ATKCharacter()
 
 	// Poses the input at ID 0 (the default controller)
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
-	
+		
 }
 
 // Called when the game starts or when spawned
@@ -173,12 +170,6 @@ void ATKCharacter::Tick(float DeltaTime)
 		{
 			SetActorLocation(FMath::Lerp(GetActorLocation(), targetLoc, CharSpeed* DeltaTime));
 		}
-	}
-
-	if (bBeingPushed)
-	{
-		float moveSpeed = GetCustomGameMode<ATKGameMode>(GetWorld())->GetInvGameSpeed();
-		AddActorLocalOffset(FVector(moveSpeed, 0.0f, 0.0f));
 	}
 
 }

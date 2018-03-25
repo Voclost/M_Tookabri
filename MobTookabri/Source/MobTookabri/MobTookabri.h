@@ -13,6 +13,8 @@
 #include "Engine/StaticMesh.h"
 #include "Materials/Material.h"
 #include "TKGameMode.h"
+#include "Runtime/Engine/Classes/Animation/AnimNotifies/AnimNotify.h"
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "Runtime/Engine/Public/EngineUtils.h"
 #include "Runtime/CoreUObject/Public/Templates/Casts.h"
 #include "InputCore.h"

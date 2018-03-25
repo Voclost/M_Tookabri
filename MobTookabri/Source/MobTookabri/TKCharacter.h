@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "TKRoad.h"
+#include "TKGameMode.h"
 #include "GameFramework/Character.h"
 #include "TKCharacter.generated.h"
 
@@ -31,7 +33,7 @@ public:
 	UPROPERTY(EditAnywhere, Category = Sound)
 	UAudioComponent* dingSound;
 
-
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -64,6 +66,8 @@ protected:
 	UPROPERTY(BlueprintReadOnly)
 	int32 Score;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float moveSpeed;
 
 private:
 	// Data for character lane positioning 
@@ -79,6 +83,5 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	
 	
 };
