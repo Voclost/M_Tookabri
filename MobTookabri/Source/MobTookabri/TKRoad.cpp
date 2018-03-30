@@ -12,7 +12,7 @@ ATKRoad::ATKRoad()
 	
 	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 
-	ConstructorHelpers::FObjectFinder<UStaticMesh>myMesh(TEXT("StaticMesh'/Game/Geometry/Road/way4/way42.way42'"));
+	ConstructorHelpers::FObjectFinder<UStaticMesh>myMesh(TEXT("StaticMesh'/Game/Geometry/Road/way4/way52.way52'"));
 
 	ConstructorHelpers::FObjectFinder<UMaterial>myMaterial(TEXT("Material'/Game/Geometry/Road/way4/Material__32.Material__32'"));
 	ConstructorHelpers::FObjectFinder<UMaterial>myMaterialEdge(TEXT("Material'/Game/Geometry/Road/way4/Material__28.Material__28'"));

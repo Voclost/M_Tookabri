@@ -62,7 +62,7 @@ ATKCharacter::ATKCharacter()
 	// Poses the input at ID 0 (the default controller)
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 	
-	moveSpeed = 8.0f;
+	moveSpeed = 10.0f;
 
 }
 
