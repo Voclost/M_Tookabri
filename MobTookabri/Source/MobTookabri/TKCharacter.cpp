@@ -134,8 +134,8 @@ void ATKCharacter::MoveLeft()
 
 void ATKCharacter::myOnComponentOverlap(UPrimitiveComponent* ThisActor, AActor* otherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SwwepResult)
 {
-	UE_LOG(LogTemp, Warning, TEXT("OUFFEOUW MEN DA5LOU DANS LE IF"));
-	/*if (otherActor->GetClass()->IsChildOf(AObstacle::StaticClass()))
+	/*UE_LOG(LogTemp, Warning, TEXT("OUFFEOUW MEN DA5LOU DANS LE IF"));
+	if (otherActor->GetClass()->IsChildOf(AObstacle::StaticClass()))
 	{
 		FVector vecBetween = otherActor->GetActorLocation() - GetActorLocation();
 		float AngleBetween = FMath::Acos(FVector::DotProduct(vecBetween.GetSafeNormal(), GetActorForwardVector().GetSafeNormal()));
