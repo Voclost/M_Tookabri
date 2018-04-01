@@ -41,7 +41,7 @@ ATKCharacter::ATKCharacter()
 	CameraBoom->SetupAttachment(RootComponent);
 
 	// The camera follows at this distance behind the character
-	CameraBoom->TargetArmLength = 240.0f;
+	CameraBoom->TargetArmLength = 255.0f;
 
 	// Offset to player
 	CameraBoom->AddRelativeLocation(FVector(0.0f, 0.0f, 160.0f));
