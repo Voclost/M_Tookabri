@@ -8,7 +8,7 @@ ATKGameMode::ATKGameMode()
 	DefaultPawnClass = ATKGameMode::StaticClass();
 
 	numCoinsForSpeedIncrease = 5;
-	gameSpeed = 10.0f;
+	gameSpeed = 20.0f;
 	gameSpeedIncrease = 5.0f;
 	gameLevel = 1;
 }

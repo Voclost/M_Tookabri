@@ -41,7 +41,7 @@ ATKCharacter::ATKCharacter()
 	CameraBoom->SetupAttachment(RootComponent);
 
 	// The camera follows at this distance behind the character
-	CameraBoom->TargetArmLength = 220.0f;
+	CameraBoom->TargetArmLength = 240.0f;
 
 	// Offset to player
 	CameraBoom->AddRelativeLocation(FVector(0.0f, 0.0f, 160.0f));
@@ -62,7 +62,7 @@ ATKCharacter::ATKCharacter()
 	// Poses the input at ID 0 (the default controller)
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 	
-	moveSpeed = 10.0f;
+	moveSpeed = 20.0f;
 
 }
 
