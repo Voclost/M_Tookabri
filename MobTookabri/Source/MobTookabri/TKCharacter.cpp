@@ -62,8 +62,29 @@ ATKCharacter::ATKCharacter()
 	// Poses the input at ID 0 (the default controller)
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 	
-	moveSpeed = 20.0f;
+	moveSpeed = 10.0f;
 
+	// Create Sound
+	/*hitObstacleSound = CreateDefaultSubobject<UAudioComponent>(TEXT("HitSound"));
+	hitObstacleSound->bAutoActivate = false;
+	hitObstacleSound->SetupAttachment(RootComponent);
+	ConstructorHelpers::FObjectFinder<USoundCue> mySoundCue(TEXT("SoundWave'/Game/Sounds/cue/Grunt.Grunt'"));
+		if (mySoundCue.Succeeded())
+		{
+			hitObstacleSound->SetSound(mySoundCue.Object);
+		}
+		
+	dingSound = CreateDefaultSubobject<UAudioComponent>(TEXT("Ding"));
+	dingSound->bAutoActivate = false;
+	dingSound->SetupAttachment(RootComponent);
+	
+	ConstructorHelpers::FObjectFinder<USoundCue>myCue(TEXT("/Game/Sounds/coinSound/Ding.Ding"));
+	
+	if (myCue.Succeeded())
+		{
+			dingSound->SetSound(myCue.Object);
+		}
+		*/
 }
 
 // Called when the game starts or when spawned
@@ -97,6 +118,14 @@ void ATKCharacter::BeginPlay()
 
 void ATKCharacter::ScoreUp()
 {
+	Score++;
+	GetCustomGameMode<ATKGameMode>(GetWorld())->CharScoreUp(Score);
+	//dingSound->Play();
+}
+
+int ATKCharacter::GetScore()
+{
+	return Score;
 }
 
 
@@ -183,6 +212,7 @@ void ATKCharacter::Tick(float DeltaTime)
 	{
 		float gameSpeed = GetCustomGameMode<ATKGameMode>(GetWorld())->SetGameSpeed(moveSpeed);
 	}
+	
 	
 }
 

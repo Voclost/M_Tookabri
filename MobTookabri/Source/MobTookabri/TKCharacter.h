@@ -33,13 +33,14 @@ public:
 	UPROPERTY(EditAnywhere, Category = Sound)
 	UAudioComponent* dingSound;
 
+	void ScoreUp();
+
+	int GetScore();
 	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-	void ScoreUp();
-
+	
 	// Will handle moving the target location of Tookabri left and right
 	UFUNCTION(BlueprintCallable, Category = "Move")
 	void MoveRight();

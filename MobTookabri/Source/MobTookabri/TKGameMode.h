@@ -33,6 +33,12 @@ public:
 
 	float SetGameSpeed(float NewGameSpeed);
 
+	float GetRunTime();
+
+	UFUNCTION()
+	virtual void Tick(float DeltaTime) override;
+
+
 protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
@@ -43,6 +49,9 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite)
 	int32 gameLevel;
+
+	UPROPERTY()
+	float RunTime;
 	
 	
 };

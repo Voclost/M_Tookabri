@@ -8,8 +8,8 @@ ATKGameMode::ATKGameMode()
 	DefaultPawnClass = ATKGameMode::StaticClass();
 
 	numCoinsForSpeedIncrease = 5;
-	gameSpeed = 20.0f;
-	gameSpeedIncrease = 5.0f;
+	gameSpeed = 10.0f;
+	gameSpeedIncrease = 1.2f;
 	gameLevel = 1;
 }
 
@@ -41,4 +41,14 @@ float ATKGameMode::SetGameSpeed(float NewGameSpeed)
 {
 	gameSpeed = NewGameSpeed;
 	return gameSpeed;
+}
+
+float ATKGameMode::GetRunTime()
+{
+	return RunTime;
+}
+
+void ATKGameMode::Tick(float DeltaTime)
+{
+	RunTime += DeltaTime;
 }
