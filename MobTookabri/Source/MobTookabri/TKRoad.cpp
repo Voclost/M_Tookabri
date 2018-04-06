@@ -38,7 +38,7 @@ ATKRoad::ATKRoad()
 
 			thisScene->SetupAttachment(RootComponent);
 			thisScene->SetRelativeLocation(FVector(ScenePos, 0.0f, 0.0f));
-			ScenePos += XBounds;
+			ScenePos += XBounds-50;
 
 			FloorMeshScenes.Add(thisScene);
 

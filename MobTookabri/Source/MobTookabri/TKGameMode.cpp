@@ -7,9 +7,9 @@ ATKGameMode::ATKGameMode()
 	// set default pawn class to our ABountyDashCharacter
 	DefaultPawnClass = ATKGameMode::StaticClass();
 
-	numCoinsForSpeedIncrease = 5;
+	numCoinsForSpeedIncrease = 75;
 	gameSpeed = 10.0f;
-	gameSpeedIncrease = 1.2f;
+	gameSpeedIncrease = 0.08f;
 	gameLevel = 1;
 }
 
