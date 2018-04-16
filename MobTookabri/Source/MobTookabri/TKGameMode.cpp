@@ -9,7 +9,7 @@ ATKGameMode::ATKGameMode()
 
 	numCoinsForSpeedIncrease = 75;
 	gameSpeed = 10.0f;
-	gameSpeedIncrease = 0.08f;
+	gameSpeedIncrease = 0.03f;
 	gameLevel = 1;
 }
 
