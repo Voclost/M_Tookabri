@@ -62,8 +62,7 @@ ATKCharacter::ATKCharacter()
 	// Poses the input at ID 0 (the default controller)
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 	
-	moveSpeed = 10.0f;
-
+	
 	// Create Sound
 	/*hitObstacleSound = CreateDefaultSubobject<UAudioComponent>(TEXT("HitSound"));
 	hitObstacleSound->bAutoActivate = false;
@@ -91,6 +90,9 @@ ATKCharacter::ATKCharacter()
 void ATKCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	float gameSpeed = GetCustomGameMode<ATKGameMode>(GetWorld())->GetGameSpeed();
+	moveSpeed = gameSpeed;
 
 	GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &ATKCharacter::myOnComponentOverlap);
 	GetCapsuleComponent()->OnComponentEndOverlap.AddDynamic(this, &ATKCharacter::myOnComponentEndOverlap);
